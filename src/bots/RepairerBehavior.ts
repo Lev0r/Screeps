@@ -12,7 +12,7 @@ export class RepairerBehavior implements IBehavior {
       bot.say('🔄 harvest')
     }
 
-    if (!bot.memory.working && bot.store.getCapacity() === 0) {
+    if (!bot.memory.working && bot.store.getFreeCapacity() === 0) {
       bot.memory.working = true
       bot.say('🛠️ repair')
     }

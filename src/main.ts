@@ -1,17 +1,15 @@
-import {} from 'prototypes/prototype.creep'
-import {} from './types'
+import * as pr from 'prototypes/prototype.creep'
 import { BotManager } from 'bots/BotManager'
 import { ErrorMapper } from 'utils/ErrorMapper'
 import { MapHelper } from 'helpers/MapHelper'
 
+pr.apply()
 const botManager: BotManager = new BotManager()
 
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
 export const loop = ErrorMapper.wrapLoop(() => {
-  console.log(`Current game tick is ${Game.time}`)
-
-  MapHelper.ScanRoom(Game.rooms[0])
+  MapHelper.ScanRoom(Game.spawns.Spawn1.room)
 
   for (const botName in Game.creeps) {
     const bot = Game.creeps[botName]
